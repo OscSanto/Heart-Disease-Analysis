@@ -43,6 +43,7 @@ Preprocessing and feature evaluation centered around the nature of the dataset
 ### Correlation Analysis
 - To understand how each feature relates to heart disease: Pearson correlation for continuous and binary features. Spearman correlation for ordinal variables
 - Both linear and rank-based relationships are captured
+<pre>
                                       Attribute Correlation    R_squared
 Thallium                               Thallium  0.52527019 0.2759087675
 Number.of.vessels.fluro Number.of.vessels.fluro  0.48157290 0.2319124558
@@ -57,6 +58,8 @@ EKG.results                         EKG.results  0.18207142 0.0331500019
 BP                                           BP  0.15538266 0.0241437698
 Cholesterol                         Cholesterol  0.11802053 0.0139288456
 FBS.over.120                       FBS.over.120 -0.01631883 0.0002663043
+</pre>
+        
 ### Interpreting
 - Features like Thallium, Number of vessels fluro, chest pain type, show strong correlation with heart disease and are critical to classifcation. Notably, Max HR has negative correlation, suggesting people with lower maximum heart rate may have higher heart disease risk.
 - FBS Cholesterol and BP are less predictive for this dataset
