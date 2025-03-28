@@ -11,23 +11,23 @@ For this classification problem SVM was chosen for:
 
 ## 📌 Dataset Features
 - **Age** - Patient's age in years
-- **Sex** - 1 = male, 0 = female
+- **Sex** - (1 = male, 0 = female)
 - **Chest pain type** -
         -- Value 1: typical angina
         -- Value 2: atypical angina
         -- Value 3: non-anginal pain
         -- Value 4: asymptomatic
-- **BP (Resting Blood Pressure)**
+- **BP (Resting Blood Pressure)** - Resting blood pressure in mm Hg
 - **Cholesterol** - serum cholestoral in mg/dl
 - **FBS over 120 (Fasting Blood Sugar)** - fasting blood suger > 120 mg/dl (1 = true; 0 = false)
 - **EKG results** - Resting electrocardiographic results (normal, ST-T wave abnormality, left ventricular hypertropy)
-- **Max HR (Maximum Heart Rate)**
-- **Exercise Angina**
-- **ST depression**
-- **Slope of ST**
-- **Number of vessels fluro**
-- **Thallium**
-- **Heart Disease** (target)
+- **Max HR (Maximum Heart Rate)** - Maximum heart rate during physical activity
+- **Exercise Angina** - Agina occurance during exercise (1 = yes, 0, = no)
+- **ST depression** - ST depression induced by exercise relative to rest 
+- **Slope of ST** - Slope of the peak exercise ST segment (upsloping, flat, downsloping)
+- **Number of vessels fluro** - Number of major vessels colored by fluoroscopy (0-3)
+- **Thallium** - Thallium stress test (normal, fixed, defect, reversible defect)
+- **Heart Disease** (target) - Heart disease present (1 = disease, 0 = absense)
 
 ## Approach
 Preprocessing and feature evaluation centered around the nature of the dataset
@@ -62,30 +62,9 @@ FBS.over.120                       FBS.over.120 -0.01631883 0.0002663043
 - FBS Cholesterol and BP are less predictive for this dataset
 ### Correlation Matrix Heatmap
 This heatmap visualizes pairwise correlation across predictors to find potential multicollinearity that may negativeiy affect proceeding model predictions.
+## Conclusion
+After training and evaluating 3 SVM classifiers (linear, polynomial, radial) we gained insights into which can accurately predict heart disease from the dataset.
+- Linear (cost=0.01): performing the best, with lowest cross validation error and well generalization performance
+- Polynomial: overfit the training data. Very low training error (6.5%) but no gain in test error.
+- Radial: underperformed, likely due to insufficent tuning or complexity of data
 
-
-categories with specfic meaningful order. Distances/values between categoreis or not numerically defined
-- certain features require Spearman's rho implmentation. These are ordinal features, as Pearson's is not appropriate.
-- factor heart disease (why?) and change into binary
-- we identify numeric, binary, ordinal columns,
-- continous features are scaled using R scale() function. (what is this? z-score?)
-- calcualte correlation matrix for numeric columns (including heart.disease target value) (what's the difference between correlation and r_squared?)
-- calcualte pearson correlation for Sex, FBS.over.120, exercise.agina, heart.disease (binary features? Are binary features considered ordinal?) 
-- calculate spearman correlation for ordinal features.
-- combine into correlation matrix.
-- sort the combined data by R_squared
-(interpret the data, how its correlated against heart.disease_binary target value)
-Attribute Correlation    R_squared
-Thallium                               Thallium  0.52527019 0.2759087675
-Number.of.vessels.fluro Number.of.vessels.fluro  0.48157290 0.2319124558
-Chest.pain.type                 Chest.pain.type  0.47006578 0.2209618397
-Exercise.angina                 Exercise.angina  0.41930271 0.1758147619
-Max.HR                                   Max.HR -0.41851397 0.1751539392
-ST.depression                     ST.depression  0.41796744 0.1746967786
-Slope.of.ST                         Slope.of.ST  0.36318164 0.1319009009
-Sex                                         Sex  0.29772076 0.0886376484
-Age                                         Age  0.22291432 0.0496907938
-EKG.results                         EKG.results  0.18207142 0.0331500019
-BP                                           BP  0.15538266 0.0241437698
-Cholesterol                         Cholesterol  0.11802053 0.0139288456
-FBS.over.120                       FBS.over.120 -0.01631883 0.0002663043
