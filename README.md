@@ -67,7 +67,7 @@ FBS.over.120                       FBS.over.120 -0.01631883 0.0002663043
 This heatmap visualizes pairwise correlation across predictors to find potential multicollinearity that may negativeiy affect proceeding model predictions.
 ## Conclusion
 After training and evaluating 3 SVM classifiers (linear, polynomial, radial) we gained insights into which can accurately predict heart disease from the dataset.
-- Linear (cost=0.01): performing the best, with lowest cross validation error and well generalization performance
-- Polynomial: overfit the training data. Very low training error (6.5%) but no gain in test error.
-- Radial: underperformed, likely due to insufficent tuning or complexity of data
+- Linear (cost = 0.01): performing the best, with lowest cross validation error and well generalization performance
+- Polynomial (cost = 1, degree = 3): overfit the training data. Very low training error (6.5%) but no gain in test error.
+- Radial (cost = 0.01, gamma = 2): underperformed, likely due to insufficent tuning or complexity of data
 
